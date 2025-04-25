@@ -2,6 +2,7 @@ package com.projectt.ecomProject.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
@@ -14,15 +15,12 @@ import static org.springframework.security.config.http.SessionCreationPolicy.*;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .cors(withDefaults())  // Apply CORS based on your CorsConfig bean
-                .csrf(csrf -> csrf.disable()) // Disable CSRF (not recommended for production unless necessary)
-                .authorizeHttpRequests(authz -> authz
-                        .anyRequest().permitAll()  // Allow all requests (you can customize this)
-                )
-                .sessionManagement(session -> session
-                        .sessionCreationPolicy(ALWAYS) // You can change this based on your requirements
+                .cors(Customizer.withDefaults()) // Enable CORS
+                .csrf(csrf -> csrf.disable()) // Disable CSRF for simplicity
+                .authorizeHttpRequests(auth -> auth
+                        .anyRequest().permitAll()
                 );
         return http.build();
     }
