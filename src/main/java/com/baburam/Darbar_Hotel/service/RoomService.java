@@ -5,6 +5,7 @@ import com.baburam.Darbar_Hotel.exception.ResourceNotFoundException;
 import com.baburam.Darbar_Hotel.model.Room;
 import com.baburam.Darbar_Hotel.repository.RoomRepository;
 import jakarta.persistence.Id;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,7 @@ public RoomService(RoomRepository roomRepository) {
 
 
     @Override
+    @Transactional
     public Room addNewRoom(MultipartFile file, String roomType, BigDecimal roomPrice) throws IOException, SQLException {
        Room room= new Room();
        room.setRoomType(roomType);
