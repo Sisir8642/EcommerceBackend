@@ -1,5 +1,6 @@
 package com.baburam.Darbar_Hotel.service;
 
+import com.baburam.Darbar_Hotel.dto.RoomDTO;
 import com.baburam.Darbar_Hotel.model.Room;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,4 +26,6 @@ public interface IRoomService {
     Room updateRoom(Long roomId, String roomType, BigDecimal roomPrice, byte[] photoBytes);
 
     Optional<Room> getRoomById(Long roomId);
+
+    RoomDTO convertToDTO(Room room);
 }
