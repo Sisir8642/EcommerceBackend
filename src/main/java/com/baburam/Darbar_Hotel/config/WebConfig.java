@@ -14,7 +14,7 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**") // Allow all endpoints
-                        .allowedOrigins("http://localhost:5173") // Allow React frontend
+                        .allowedOrigins("https://hotelbookingjava.netlify.app") // Allow React frontend
                         .allowedMethods("GET", "POST", "PUT", "DELETE") // Allow specific methods
                         .allowedHeaders("*");
             }

@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://hotelbookingjava.netlify.app")
 @RestController
 @ResponseBody
 @RequiredArgsConstructor
