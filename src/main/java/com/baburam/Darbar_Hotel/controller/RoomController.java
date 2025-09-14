@@ -81,7 +81,7 @@ public class RoomController {
 
     // Get room by ID
     @GetMapping("/{roomId}")
-    public ResponseEntity<RoomResponse> getRoomById(@PathVariable Long roomId) throws SQLException {
+    public ResponseEntity<RoomResponse> getRoomById(@PathVariable("roomId") Long roomId) throws SQLException {
         Room room = roomService.getRoomById(roomId)
                 .orElseThrow(() -> new ResourceNotFoundException("Room not found"));
 
@@ -100,7 +100,7 @@ public class RoomController {
     // Update room
     @PutMapping("/update/{roomId}")
     public ResponseEntity<RoomResponse> updateRoom(
-            @PathVariable Long roomId,
+            @PathVariable("roomId") Long roomId,
             @RequestParam(required = false) String roomType,
             @RequestParam(required = false) BigDecimal roomPrice,
             @RequestParam(required = false) MultipartFile photo
@@ -129,7 +129,7 @@ public class RoomController {
 
     // Delete room
     @DeleteMapping("/delete/{roomId}")
-    public ResponseEntity<Void> deleteRoom(@PathVariable Long roomId) {
+    public ResponseEntity<Void> deleteRoom(@PathVariable("roomId") Long roomId) {
         roomService.deleteRoom(roomId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
